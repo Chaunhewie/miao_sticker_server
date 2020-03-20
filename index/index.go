@@ -1,6 +1,7 @@
 package index
 
 import (
+	"miao_sticker_server/media/utils"
 	"os"
 	"strconv"
 	"strings"
@@ -45,6 +46,8 @@ func (app *MyApp) registerRouters() {
 }
 
 func (app *MyApp) Run() {
+	// 开启不断抓取仓库信息
+	go utils.FetchRepoInfoLoop(app.HomeHandler.RepoFilePath)
 	// 绑定端口是8080
 	logger.Info("Begin to run...")
 	if err := app.Router.Run(":"+strconv.Itoa(constdef.PORT)); err != nil {

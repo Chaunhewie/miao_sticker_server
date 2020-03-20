@@ -1,25 +1,41 @@
 package services
 
 import (
+	"encoding/json"
 	"github.com/gin-gonic/gin"
+	"io/ioutil"
+	"miao_sticker_server/media/models"
 	"net/http"
+	"os"
 
 	"miao_sticker_server/index/logger"
 )
 
 type HomeHandler struct {
-	Router         *gin.Engine
-	FilePrePath    string
-	Exit           chan bool
+	RepoFilePath string
+	RepoInfo *models.RepoInfo
+	Router       *gin.Engine
+	FilePrePath  string
+	Exit         chan bool
 }
 
 func (h *HomeHandler) Get(c *gin.Context) {
 	logger.Info("Into Get().")
-	print(c.Params)
-
+	if err := h.GetRepoInfo(); err != nil{
+		c.JSON(http.StatusOK, gin.H{
+			"success":          false,
+			"stargazers_count": -1,
+			"watchers_count":   -1,
+			"forks":            -1,
+		})
+		logger.Error("Out Get() With Error: %v.", err.Error())
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{
-		"success": true,
-		"extra":   "数据上传失败，文件写入失败！",
+		"success":          true,
+		"stargazers_count": h.RepoInfo.StargazersCount,
+		"watchers_count":   h.RepoInfo.WatchersCount,
+		"forks_count":      h.RepoInfo.Forks,
 	})
 	logger.Info("Out Get().")
 	return
@@ -43,3 +59,22 @@ func (h *HomeHandler) Put(c *gin.Context) {
 	return
 }
 
+func (h *HomeHandler) GetRepoInfo() error {
+	f, err := os.OpenFile(h.RepoFilePath, os.O_RDONLY, 0666)
+	if err != nil {
+		logger.Error("Open Repo File Error: %v", err.Error())
+		return err
+	}
+	defer f.Close()
+	var repoInfoBytes []byte
+	if repoInfoBytes, err = ioutil.ReadAll(f); err != nil {
+		logger.Error("Read Repo File Error: %v", err.Error())
+		return err
+	}
+	logger.Info("%v", string(repoInfoBytes))
+	if err = json.Unmarshal(repoInfoBytes, h.RepoInfo); err != nil {
+		logger.Error("Unmarshal Repo Info Error: %v", err.Error())
+		return err
+	}
+	return nil
+}
