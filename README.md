@@ -31,16 +31,16 @@ c)	设置 $GOROOT=go所安装的文件夹（.../go）；$GOPATH= workspace所在
 d)	进入.../workspace/src，使用git获取代码：
 ```
  cd ~/go_workspace/src
- git clone https://github.com/Chaunhewie/code.tianchanghao.org.git
+ git clone https://github.com/Chaunhewie/miao_sticker_server.git
 ```
 
 e)	进入文件夹启动项目
 ```
-cd ~/go_workspace/src/code.tianchanghao.org
+cd ~/go_workspace/src/miao_sticker_server
 go run main.go
 ```
 
 # 注：
-代码使用的端口为14488；
+代码使用的端口为8080；
 
 

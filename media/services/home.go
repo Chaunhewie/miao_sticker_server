@@ -3,7 +3,7 @@ package services
 import (
 	"github.com/gin-gonic/gin"
 
-	"code.tianchanghao.org/index/logger"
+	"miao_sticker_server/index/logger"
 )
 
 type HomeHandler struct {
@@ -14,6 +14,7 @@ type HomeHandler struct {
 
 func (h *HomeHandler) Get(c *gin.Context) {
 	logger.Info("Into Get().")
+
 	logger.Info("Out Get().")
 	return
 }

@@ -2,6 +2,7 @@ package index
 
 import (
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/gin-contrib/sessions"
@@ -46,7 +47,7 @@ func (app *MyApp) registerRouters() {
 func (app *MyApp) Run() {
 	// 绑定端口是8080
 	logger.Info("Begin to run...")
-	if err := app.Router.Run(":"+string(constdef.PORT)); err != nil {
+	if err := app.Router.Run(":"+strconv.Itoa(constdef.PORT)); err != nil {
 		logger.Error("Run Error: %v", err)
 	}
 }

@@ -23,7 +23,7 @@ func NewHandler(router *gin.Engine) *services.HomeHandler {
 func InitRouters(router *gin.Engine) {
 	// 注册路由策略
 	router.GET("/GET", handler.Get)
-	router.GET("/POST", handler.Post)
-	router.GET("/DELETE", handler.Delete)
-	router.POST("/PUT", handler.Put)
+	router.POST("/POST", handler.Post)
+	router.DELETE("/DELETE", handler.Delete)
+	router.PUT("/PUT", handler.Put)
 }
