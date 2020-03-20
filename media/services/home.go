@@ -2,6 +2,7 @@ package services
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 
 	"miao_sticker_server/index/logger"
 )
@@ -14,7 +15,12 @@ type HomeHandler struct {
 
 func (h *HomeHandler) Get(c *gin.Context) {
 	logger.Info("Into Get().")
+	print(c.Params)
 
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"extra":   "数据上传失败，文件写入失败！",
+	})
 	logger.Info("Out Get().")
 	return
 }

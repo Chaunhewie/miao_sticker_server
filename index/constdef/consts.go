@@ -5,5 +5,5 @@ const (
 	COOKIE_NAME    = "MiaoStickerCookies"
 	SESSION_NAME   = "MiaoStickerSession"
 
-	PORT = 8080
+	PORT = 14488
 )
