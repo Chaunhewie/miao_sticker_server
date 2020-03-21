@@ -3,12 +3,6 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "CYQOrtwKAnaPcUmb6vyVZfMmbkY=",
-			"path": "code.tianchanghao.org/index/logger",
-			"revision": "2d1913becbb03f937e05ce59e84749b0b91c099c",
-			"revisionTime": "2020-03-20T09:49:59Z"
-		},
-		{
 			"checksumSHA1": "/Mf+e6NMbRCrJ/e1AeoinE+p07M=",
 			"path": "github.com/fatih/color",
 			"revision": "3f9d52f7176a6927daacff70a3e8d1dc2025c53e",
@@ -129,11 +123,11 @@
 			"revisionTime": "2018-08-23T13:54:43Z"
 		},
 		{
-			"checksumSHA1": "XEV3BI3nHA/rNa/tIgB7fVCrDww=",
-			"origin": "code.tianchanghao.org/vendor/github.com/mattn/go-colorable",
+			"checksumSHA1": "ItosiW1ZCzvmd9fmeNxUQ3E9Wqk=",
+			"origin": "github.com/fatih/color/vendor/github.com/mattn/go-colorable",
 			"path": "github.com/mattn/go-colorable",
-			"revision": "2d1913becbb03f937e05ce59e84749b0b91c099c",
-			"revisionTime": "2020-03-20T09:49:59Z"
+			"revision": "3f9d52f7176a6927daacff70a3e8d1dc2025c53e",
+			"revisionTime": "2018-10-10T23:13:11Z"
 		},
 		{
 			"checksumSHA1": "LkbotKu3JQxXEZZ9P40yhnFOycY=",

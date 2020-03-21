@@ -34,23 +34,7 @@ d)	进入.../workspace/src，使用git获取代码：
  git clone https://github.com/Chaunhewie/miao_sticker_server.git
 ```
 
-e)	利用govendor拉取依赖：
-```
- # 安装 govendor
- go get -u github.com/kardianos/govendor
- ## 如果上述无法安装
- # cd ~/go_workspace/src
- # mkdir github.com && cd github.com
- # mkdir kardianos && cd kardianos
- # git clone github.com/kardianos/govendor
- # cd govendor 
- # go install
- 
- cd ~/go_workspace/src/miao_sticker_server
- govendor sync
-```
-
-f)	进入文件夹启动项目
+e)	进入文件夹启动项目
 ```
  cd ~/go_workspace/src/miao_sticker_server
  go run main.go

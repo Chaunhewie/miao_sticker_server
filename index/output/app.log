@@ -1,0 +1,3 @@
+Info 2020-03-22 00:36:55.029 index.go miao_sticker_server/index.(*MyApp).registerRouters:43 data=[Register Routers...]
+Info 2020-03-22 00:36:55.029 index.go miao_sticker_server/index.(*MyApp).Run:52 data=[Begin to run...]
+Info 2020-03-22 00:36:58.943 request.go miao_sticker_server/media/utils.FetchRepoInfoLoop:120 data=[Fetch Repo Info Success]
