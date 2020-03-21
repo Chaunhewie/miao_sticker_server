@@ -34,11 +34,18 @@ d)	进入.../workspace/src，使用git获取代码：
  git clone https://github.com/Chaunhewie/miao_sticker_server.git
 ```
 
-e)	进入文件夹启动项目
+e)	利用govendor拉取依赖：
+```
+ go get -u github.com/kardianos/govendor
+ govendor sync
+```
+
+f)	进入文件夹启动项目
 ```
 cd ~/go_workspace/src/miao_sticker_server
 go run main.go
 ```
+
 
 # 注：
 代码使用的端口为14488；
