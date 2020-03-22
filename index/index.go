@@ -1,7 +1,6 @@
 package index
 
 import (
-	"miao_sticker_server/media/utils"
 	"os"
 	"strconv"
 	"strings"
@@ -17,9 +16,9 @@ import (
 )
 
 type MyApp struct {
-	ProjectPath  string
-	Router       *gin.Engine
-	HomeHandler  *mediaServices.HomeHandler
+	ProjectPath string
+	Router      *gin.Engine
+	HomeHandler *mediaServices.HomeHandler
 }
 
 func (app *MyApp) Init() {
@@ -47,10 +46,10 @@ func (app *MyApp) registerRouters() {
 
 func (app *MyApp) Run() {
 	// 开启不断抓取仓库信息
-	go utils.FetchRepoInfoLoop(app.HomeHandler.RepoFilePath)
+	app.HomeHandler.FetchRepoInfoLoop()
 	// 绑定端口是8080
 	logger.Info("Begin to run...")
-	if err := app.Router.Run(":"+strconv.Itoa(constdef.PORT)); err != nil {
+	if err := app.Router.Run(":" + strconv.Itoa(constdef.PORT)); err != nil {
 		logger.Error("Run Error: %v", err)
 	}
 }

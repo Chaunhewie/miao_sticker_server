@@ -5,5 +5,5 @@ const (
 	COOKIE_NAME    = "MiaoStickerCookies"
 	SESSION_NAME   = "MiaoStickerSession"
 
-	PORT = 14488
+	PORT       = 14488 // 服务端口号
 )

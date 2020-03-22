@@ -1,13 +1,14 @@
 package media
 
 import (
-	"miao_sticker_server/media/constdef"
-	"miao_sticker_server/media/models"
 	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 
+	"miao_sticker_server/index/logger"
+	"miao_sticker_server/media/constdef"
+	"miao_sticker_server/media/models"
 	"miao_sticker_server/media/services"
 )
 
@@ -22,9 +23,10 @@ func NewHandler(router *gin.Engine) *services.HomeHandler {
 			WatchersCount:   0,
 			Forks:           0,
 		},
-		Router:      router,
-		FilePrePath: strings.Replace(os.Getenv("GOPATH"), "\\", "/", -1) + constdef.RESOURCES_PATH,
-		Exit:        make(chan bool),
+		UserInfoOpenIdCache: make(map[string]*models.UserInfo),
+	}
+	if err := handler.UpdateRepoInfo(); err != nil {
+		logger.Error("UpdateRepoInfo Error: %v", err.Error())
 	}
 	return handler
 }
@@ -35,4 +37,5 @@ func InitRouters(router *gin.Engine) {
 	router.POST("/", handler.Post)
 	router.DELETE("/", handler.Delete)
 	router.PUT("/", handler.Put)
+	router.POST("/login", handler.PostLogin)
 }
